@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<script>
+    <using xmlTag="lucene" module="com.alogic.xscript.lucene.IndexConf"/>
+
+    <lucene indexDir="D:\\luceneIndex" analyzer="StandardAnalyzer">
+    	<!-- create为false即批量增加索引,默认为false;
+    		true即新建索引，如果是第一次用lucene建立索引，则必须设置为true -->
+    	<idx-writer create="true">
+	        <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
+	           type有text和Blob两种类型
+	        -->        
+	        <idx-new type="text" id="text1" value="hello,man!"/>
+	        <idx-new type="text" id="text2" value="goodby,man!"/>
+	        <idx-new type="text" id="text3" value="hello,woman!"/>
+	        <idx-new type="text" id="text4" value="goodbye,woman!"/>   
+        </idx-writer>        
+    </lucene>
+</script>

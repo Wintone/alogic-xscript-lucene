@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<script>
+    <using xmlTag="lucene" module="com.alogic.xscript.lucene.IndexConf"/>
+
+    <lucene indexDir="D:\\luceneIndex" analyzer="StandardAnalyzer">
+   		<idx-writer>
+        <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
+        -->
+       		<idx-delete field="content" q="man" />
+        </idx-writer>
+    </lucene>
+</script>
