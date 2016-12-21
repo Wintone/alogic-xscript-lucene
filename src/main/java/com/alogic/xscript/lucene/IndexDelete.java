@@ -27,15 +27,17 @@ public class IndexDelete extends IndexWriterOperation {
 	public void configure(Properties p) {
 		super.configure(p);
 		
-		field = PropertiesConstants.getString(p, "field", field, true);
-		q = PropertiesConstants.getString(p, "q", q, true);
+		field = p.GetValue("field", field, false, true);
+		q = p.GetValue("q", q, false, true);
 	}
 
 	@Override
 	protected void onExecute(IndexWriter indexWriter, Map<String, Object> root, Map<String, Object> current,
 			LogicletContext ctx, ExecuteWatcher watcher) {
 		try {
-			indexWriter.deleteDocuments(new Term(field, q));
+			String fieldValue = ctx.transform(field);
+			String qStr = ctx.transform(q);
+			indexWriter.deleteDocuments(new Term(fieldValue, qStr));
 			indexWriter.commit();
 			logger.info("Index delete  Success! ");
 		} catch(IOException e) {

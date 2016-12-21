@@ -24,7 +24,7 @@ public class IndexQuery extends IndexReaderOperation {
 	
 	
 	protected String field = "content";
-	protected String queryStr = null;
+	protected String q = null;
 
 	public IndexQuery(String tag, Logiclet p) {
 		super(tag, p);
@@ -35,20 +35,22 @@ public class IndexQuery extends IndexReaderOperation {
 	public void configure(Properties p) {
 		super.configure(p);
 		
-		field = PropertiesConstants.getString(p, "field", field, true);
-		queryStr = PropertiesConstants.getString(p, "q", queryStr, true);
+		field = p.GetValue("field", field, false, true);
+		q = p.GetValue("q", q, false, true);
 	}	
 
 	@Override
 	protected void onExecute(IndexReader indexReader, Map<String, Object> root, Map<String, Object> current,
 			LogicletContext ctx, ExecuteWatcher watcher) {
 		try {
-			String tagValue = ctx.transform(tag);			
+			String tagValue = ctx.transform(tag);	
+			String fieldType = ctx.transform(field);
+			String queryStr = ctx.transform(q);
 			Map<String, List<Object>> data = new HashMap<String, List<Object>>();
 			IndexSearcher searcher = new IndexSearcher(indexReader);
 			
 			Analyzer analyzer = ctx.getObject("analyzer");
-			Query query = new QueryParser(field,analyzer).parse(queryStr);
+			Query query = new QueryParser(fieldType, analyzer).parse(queryStr);
 			
 			TopScoreDocCollector collector = TopScoreDocCollector.create(1024);
 			searcher.search(query, collector);

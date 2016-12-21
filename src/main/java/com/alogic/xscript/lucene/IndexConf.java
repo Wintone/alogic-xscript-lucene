@@ -30,8 +30,8 @@ public class IndexConf extends Segment{
 		super.configure(p);
 		
 		cid = PropertiesConstants.getString(p, "cid", cid, true);
-		indexDir = PropertiesConstants.getString(p, "indexDir", indexDir, true);
-		analyzer = PropertiesConstants.getString(p, "analyzer", analyzer, true);
+		indexDir = p.GetValue("indexDir", indexDir, false, true);
+		analyzer = p.GetValue("analyzer", analyzer, false, true);
 	}
 	
 	@Override
@@ -39,7 +39,9 @@ public class IndexConf extends Segment{
 			Map<String, Object> current, LogicletContext ctx, ExecuteWatcher watcher) {
 		Indexer.Abstract indexer = null;
 		try {
-			indexer = new FS(indexDir, analyzer);
+			String dir = ctx.transform(indexDir);
+			String analyzerType = ctx.transform(analyzer);
+			indexer = new FS(dir, analyzerType);
 		} catch(IOException e) {
 			e.printStackTrace();
 		}

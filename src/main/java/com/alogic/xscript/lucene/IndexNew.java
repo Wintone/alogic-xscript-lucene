@@ -26,18 +26,21 @@ public class IndexNew extends IndexWriterOperation {
 	public void configure(Properties p) {
 		super.configure(p);
 
-		type = PropertiesConstants.getString(p, "type", type, true);
-		id = PropertiesConstants.getString(p, "id", id, true);
-		value = PropertiesConstants.getString(p, "value", value, true);
+		type = p.GetValue("type", type, false, true);
+		id = p.GetValue("id", id, false, true);
+		value = p.GetValue("value", value, false, true);
 	}
 	
 	@Override
 	protected void onExecute(IndexWriter indexWriter, Map<String, Object> root, Map<String, Object> current,
 			LogicletContext ctx, ExecuteWatcher watcher) {	
-		if(type.equals("text")) {
-			new TextIndexBuilder(id, value).addDocument(indexWriter);
-		} else if(type.equals("Blob")) {
-			new BlobIndexBuilder(id,value).addDocument(indexWriter);
+		String ty = ctx.transform(type);
+		String field = ctx.transform(id);
+		String fieldValue = ctx.transform(value);
+		if(ty.equals("text")) {
+			new TextIndexBuilder(field, fieldValue).addDocument(indexWriter);
+		} else if(ty.equals("Blob")) {
+			new BlobIndexBuilder(field, fieldValue).addDocument(indexWriter);
 		}	
 	}
 

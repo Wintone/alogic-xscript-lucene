@@ -17,9 +17,9 @@ import com.anysoft.util.PropertiesConstants;
 
 public class IndexUpdate extends IndexWriterOperation {
 	
-	protected String fileName = null;
+	protected String file = null;
 	
-	protected String content = null;
+	protected String contentValue = null;
 
 	public IndexUpdate(String tag, Logiclet p) {
 		super(tag, p);
@@ -30,13 +30,15 @@ public class IndexUpdate extends IndexWriterOperation {
 	public void configure(Properties p) {
 		super.configure(p);
 		
-		fileName = PropertiesConstants.getString(p, "id", fileName, true);
-		content = PropertiesConstants.getString(p, "value", content, true);
+		file = p.GetValue("id", file, false, true);
+		contentValue = p.GetValue("value", contentValue, false, true);
 	}
 	@Override
 	protected void onExecute(IndexWriter indexWriter, Map<String, Object> root, Map<String, Object> current,
 			LogicletContext ctx, ExecuteWatcher watcher) {
 		try {
+			String fileName = ctx.transform(file);
+			String content = ctx.transform(contentValue);
 			Document doc = new Document();
 			doc.add(new TextField("fileName", fileName, Store.YES));
 			doc.add(new TextField("content", content, Store.YES));			

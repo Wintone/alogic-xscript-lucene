@@ -13,6 +13,9 @@
 	        <idx-new type="text" id="text2" value="goodby,man!"/>
 	        <idx-new type="text" id="text3" value="hello,woman!"/>
 	        <idx-new type="text" id="text4" value="goodbye,woman!"/>   
+	        <idx-new type="text" id="text5" value="hello,world!"/>   
+	        <idx-new type="text" id="text6" value="what happen,woman!"/>   
+	        <idx-new type="text" id="text7" value="hello,what's your name!"/>   
         </idx-writer>        
     </lucene>
 </script>
