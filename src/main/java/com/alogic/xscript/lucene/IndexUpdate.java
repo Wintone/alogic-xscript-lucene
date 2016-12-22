@@ -13,7 +13,6 @@ import com.alogic.xscript.ExecuteWatcher;
 import com.alogic.xscript.Logiclet;
 import com.alogic.xscript.LogicletContext;
 import com.anysoft.util.Properties;
-import com.anysoft.util.PropertiesConstants;
 
 public class IndexUpdate extends IndexWriterOperation {
 	
@@ -23,7 +22,6 @@ public class IndexUpdate extends IndexWriterOperation {
 
 	public IndexUpdate(String tag, Logiclet p) {
 		super(tag, p);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -40,9 +38,9 @@ public class IndexUpdate extends IndexWriterOperation {
 			String fileName = ctx.transform(file);
 			String content = ctx.transform(contentValue);
 			Document doc = new Document();
-			doc.add(new TextField("fileName", fileName, Store.YES));
+			doc.add(new TextField("filename", fileName, Store.YES));
 			doc.add(new TextField("content", content, Store.YES));			
-			indexWriter.updateDocument(new Term("fileName", fileName), doc);
+			indexWriter.updateDocument(new Term("filename", fileName), doc);
 			indexWriter.commit();
 			logger.info("Index update  Success! ");
 		} catch(IOException e) {

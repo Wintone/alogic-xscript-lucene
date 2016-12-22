@@ -3,13 +3,11 @@ package com.alogic.xscript.lucene.util;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.apache.lucene.index.FilterLeafReader.FilterFields;
+import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
-import org.apache.lucene.search.Filter;
-import org.apache.lucene.search.QueryWrapperFilter;
+import org.apache.lucene.search.Query;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -24,7 +22,6 @@ import com.anysoft.util.XmlTools;
 /**
  * Filter Builder
  * 
- * @author duanyy
  *
  */
 public interface FilterBuilder extends XMLConfigurable,Configurable{
@@ -34,7 +31,7 @@ public interface FilterBuilder extends XMLConfigurable,Configurable{
 	 * 
 	 * @return Filter实例
 	 */
-	public Filter getFilter(Properties p);
+	public Query getFilter(Properties p);
 	
 	/**
 	 * 虚基类
@@ -69,11 +66,19 @@ public interface FilterBuilder extends XMLConfigurable,Configurable{
 		 */
 		protected List<FilterBuilder> children = new ArrayList<FilterBuilder>();
 		
+		protected abstract BooleanClause.Occur getOccur();
 		
 		@Override
-		public Filter getFilter(Properties p) {
-			return null;
+		public Query getFilter(Properties p) {
+			BooleanQuery.Builder bQuery=new BooleanQuery.Builder();
+			for (FilterBuilder fb:children){
+				Query filter = fb.getFilter(p);
+				if (filter != null){
+					bQuery.add(filter, getOccur());
+				}
+			}
 			
+			return bQuery.build();
 		}
 
 		@Override

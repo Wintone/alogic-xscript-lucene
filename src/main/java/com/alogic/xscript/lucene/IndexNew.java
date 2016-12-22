@@ -10,7 +10,6 @@ import com.alogic.xscript.LogicletContext;
 import com.alogic.xscript.lucene.util.BlobIndexBuilder;
 import com.alogic.xscript.lucene.util.TextIndexBuilder;
 import com.anysoft.util.Properties;
-import com.anysoft.util.PropertiesConstants;
 
 public class IndexNew extends IndexWriterOperation {
 	

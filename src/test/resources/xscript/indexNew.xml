@@ -9,13 +9,13 @@
 	        <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
 	           type有text和Blob两种类型
 	        -->        
-	        <idx-new type="text" id="text1" value="hello,man!"/>
+	        <idx-new type="text" id="text" value="hello,man,woman!"/>
 	        <idx-new type="text" id="text2" value="goodby,man!"/>
-	        <idx-new type="text" id="text3" value="hello,woman!"/>
-	        <idx-new type="text" id="text4" value="goodbye,woman!"/>   
-	        <idx-new type="text" id="text5" value="hello,world!"/>   
-	        <idx-new type="text" id="text6" value="what happen,woman!"/>   
-	        <idx-new type="text" id="text7" value="hello,what's your name!"/>   
+	        <idx-new type="text" id="text3" value="hello,woman,man!"/>
+	        <idx-new type="text" id="text4" value="goodbye,woman,man!"/>   
+	        <idx-new type="text" id="text5" value="hello,world,woman!"/>   
+	        <idx-new type="text" id="text6" value="hello,what happen,woman!"/>   
+	        <idx-new type="text" id="text7" value="hello,what's your name,man!"/>   
         </idx-writer>        
     </lucene>
 </script>

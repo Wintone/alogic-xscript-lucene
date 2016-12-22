@@ -4,9 +4,22 @@
 
     <lucene indexDir="D:\\luceneIndex" analyzer="StandardAnalyzer">
     	<idx-reader>
-        <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
-        -->
-        	<idx-query field="content" q="Hello" />
+	        <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
+	        	第一种情况，没有过滤器的简单查询
+	        	第二种情况，过滤器查询
+	        -->
+       		<!-- <idx-query type="TermQuery" field="content" q="man"/> -->
+        	<idx-query>
+        		<filter module="And">
+	        		<filter module="And">
+	        			<filter module="QueryParse" field="content" q="man"/>
+	        		</filter>
+	        		<filter module="Or">
+	        			<filter module="QueryParse"  field="content"  q="hello"/>
+	        			<filter module="QueryParse" field="content" q="woman"/>
+	        		</filter>
+        		</filter>
+        	</idx-query>
         </idx-reader>
     </lucene>
 </script>

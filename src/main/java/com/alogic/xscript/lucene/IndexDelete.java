@@ -10,7 +10,6 @@ import com.alogic.xscript.ExecuteWatcher;
 import com.alogic.xscript.Logiclet;
 import com.alogic.xscript.LogicletContext;
 import com.anysoft.util.Properties;
-import com.anysoft.util.PropertiesConstants;
 
 public class IndexDelete extends IndexWriterOperation {
 	
