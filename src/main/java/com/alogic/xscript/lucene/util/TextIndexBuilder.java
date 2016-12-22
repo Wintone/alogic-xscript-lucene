@@ -8,8 +8,6 @@ import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexWriter;
 
-import com.alogic.lucene.core.IndexBuilder;
-
 public class TextIndexBuilder {
 	
 	protected static final Logger logger = LogManager.getLogger(TextIndexBuilder.class);

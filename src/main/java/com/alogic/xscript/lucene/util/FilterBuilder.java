@@ -21,7 +21,7 @@ import com.anysoft.util.XmlTools;
 
 /**
  * Filter Builder
- * 
+ * 过滤器生成接口
  *
  */
 public interface FilterBuilder extends XMLConfigurable,Configurable{
