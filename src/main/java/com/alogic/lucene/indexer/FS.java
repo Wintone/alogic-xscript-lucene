@@ -14,7 +14,7 @@ import com.anysoft.util.Properties;
 /**
  * 基于FSDirectory的Indexer
  * 
- * @author duanyy
+ * @author chenwt
  *
  */
 public class FS extends Indexer.Abstract{

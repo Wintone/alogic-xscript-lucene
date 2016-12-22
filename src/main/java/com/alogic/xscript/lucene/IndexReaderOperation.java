@@ -29,7 +29,6 @@ public abstract class IndexReaderOperation extends AbstractLogiclet {
 
 	public IndexReaderOperation(String tag, Logiclet p) {
 		super(tag, p);
-		// TODO Auto-generated constructor stub
 	}
 
 	public void configure(Properties p) {

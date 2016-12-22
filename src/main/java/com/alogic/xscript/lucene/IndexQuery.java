@@ -156,7 +156,6 @@ public class IndexQuery extends IndexReaderOperation {
 			current.put(tagValue, list);
 		}catch (Exception exc){
 			logger.error("Search error "+exc);
-			exc.printStackTrace();
 		}
 	}
 

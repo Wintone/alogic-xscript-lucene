@@ -8,6 +8,11 @@ import com.alogic.xscript.lucene.util.FilterBuilder;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
 
+/**
+ * PrefixQuery前缀字符查询
+ *
+ */
+
 public class Prefix extends FilterBuilder.Abstract {
 	
 	protected Query filter;

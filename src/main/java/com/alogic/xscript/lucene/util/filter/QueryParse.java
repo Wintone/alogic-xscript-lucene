@@ -11,6 +11,10 @@ import com.alogic.xscript.lucene.util.FilterBuilder;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
 
+/**
+ * QueryParser单域查询
+ *
+ */
 public class QueryParse extends FilterBuilder.Abstract {
 	
 	protected Query filter;

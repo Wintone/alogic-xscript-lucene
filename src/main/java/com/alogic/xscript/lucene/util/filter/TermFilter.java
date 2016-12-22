@@ -8,6 +8,12 @@ import com.alogic.xscript.lucene.util.FilterBuilder;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
 
+/**
+ *TermQuery
+ * 单个关键字域查询
+ *
+ */
+
 public class TermFilter extends FilterBuilder.Abstract {
 	
 	protected Query filter;

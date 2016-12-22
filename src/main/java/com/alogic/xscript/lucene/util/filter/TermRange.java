@@ -8,6 +8,11 @@ import com.alogic.xscript.lucene.util.FilterBuilder;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
 
+/**
+ * TermRangeQuery(字符串范围搜索)
+ *
+ */
+
 public class TermRange extends FilterBuilder.Abstract {
 	
 	protected Query filter;

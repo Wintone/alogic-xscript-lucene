@@ -38,7 +38,7 @@ public class IndexDelete extends IndexWriterOperation {
 			String qStr = ctx.transform(q);
 			indexWriter.deleteDocuments(new Term(fieldValue, qStr));
 			indexWriter.commit();
-			logger.info("Index delete  Success! ");
+			logger.info("Index delete Success! ");
 		} catch(IOException e) {
 			e.printStackTrace();
 		}

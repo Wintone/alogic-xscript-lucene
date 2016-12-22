@@ -42,7 +42,7 @@ public class IndexUpdate extends IndexWriterOperation {
 			doc.add(new TextField("content", content, Store.YES));			
 			indexWriter.updateDocument(new Term("filename", fileName), doc);
 			indexWriter.commit();
-			logger.info("Index update  Success! ");
+			logger.info("Index update Success! ");
 		} catch(IOException e) {
 			e.printStackTrace();
 		}

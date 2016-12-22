@@ -11,6 +11,11 @@ import com.alogic.xscript.lucene.util.FilterBuilder;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
 
+/**
+ * MultiFieldQueryParser
+ * 多域查询,每个域之间用‘|’分隔
+ *
+ */
 public class MultiField extends FilterBuilder.Abstract {
 
 	protected Query filter;

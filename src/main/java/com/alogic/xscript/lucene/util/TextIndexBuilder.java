@@ -37,7 +37,7 @@ public class TextIndexBuilder {
 			doc.add(new TextField("content", content, Field.Store.YES));			
 			writer.addDocument(doc);
 			writer.commit();
-			logger.info("TextIndexBuilder  Success! " + doc);
+			//logger.info("TextIndexBuilder  Success! " + doc);
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}

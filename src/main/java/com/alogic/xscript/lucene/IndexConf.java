@@ -43,7 +43,7 @@ public class IndexConf extends Segment{
 			String analyzerType = ctx.transform(analyzer);
 			indexer = new FS(dir, analyzerType);
 		} catch(IOException e) {
-			e.printStackTrace();
+			logger.error("Error" + e);
 		}
 		
 		try {

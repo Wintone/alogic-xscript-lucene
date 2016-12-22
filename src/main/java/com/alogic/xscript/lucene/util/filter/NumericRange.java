@@ -7,6 +7,11 @@ import com.alogic.xscript.lucene.util.FilterBuilder;
 import com.anysoft.util.Properties;
 import com.anysoft.util.PropertiesConstants;
 
+/**
+ * NumericRangeQuery(数字范围搜索)
+ *
+ */
+
 public class NumericRange extends FilterBuilder.Abstract {
 
 	protected Query filter;
