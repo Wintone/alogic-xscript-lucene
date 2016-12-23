@@ -40,8 +40,22 @@ alogic-xscript-lucene是基于xscript2.0的lucene插件，提供了使用lucene�
     	 <idx-reader>
         <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
         -->
-        	<idx-query q="hello" />
+        	<idx-query type="PrefixQuery" field="content" q="hel" />
         </idx-reader>
+        <idx-writer>
+        <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
+        -->
+     	   <idx-update id="text4" value="hello,world,woman!" />
+        </idx-writer>
+        <idx-writer>
+        <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
+        -->
+       		<idx-delete field="content" q="man" />
+        </idx-writer>
     </indexConf>
 </script>
 ```
+
+### 指令参考
+
+参见[alogic-xscript-lucene参考](src/docs/reference.md)。
