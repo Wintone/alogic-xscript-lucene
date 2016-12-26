@@ -1,11 +1,11 @@
-QueryParse
+NumericRange
 ===========
 
-QueryParse用于选取。
+NumericRange用于选取。
 
 ### 实现类
 
-com.alogic.xscript.lucene.util.filter.QueryParse
+com.alogic.xscript.lucene.util.filter.NumericRange
 
 ### 配置参数
 
