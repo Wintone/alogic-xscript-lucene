@@ -21,6 +21,12 @@ public class TermRange extends FilterBuilder.Abstract {
 	public Query getFilter(Properties p) {
 		return filter;
 	}
+	
+	@Override
+	public String getOccur() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public void configure(Properties p) {
@@ -31,7 +37,7 @@ public class TermRange extends FilterBuilder.Abstract {
 		Boolean includeUpper = PropertiesConstants.getBoolean(p, "includeUpper", true);
 	    BytesRef lower = lowerTerm == null ? null : new BytesRef(lowerTerm);
 	    BytesRef upper = upperTerm == null ? null : new BytesRef(upperTerm);
-		filter = new TermRangeQuery(field, lower, upper, includeLower, includeUpper);
+	    filter = new TermRangeQuery(field, lower, upper, includeLower, includeUpper);
 	}
 
 }

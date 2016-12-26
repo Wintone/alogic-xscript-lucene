@@ -16,10 +16,16 @@ import com.anysoft.util.PropertiesConstants;
 public class Wildcard extends FilterBuilder.Abstract {
 	
 	protected Query filter;
-
+	
 	@Override
 	public Query getFilter(Properties p) {
 		return filter;
+	}
+	
+	@Override
+	public String getOccur() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override

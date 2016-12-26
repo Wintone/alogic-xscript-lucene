@@ -5,6 +5,7 @@ Filter主要用于对lucene的查询结果进行过滤，主要应用于idx-quer
 
 当前支持的Filter包括：
 
-- [And](And.md) --以And条件连接多个子Filter 
-- [Or](Or.md) --以Or条件连接多个子Filter
+- [Must](Must.md) --应用BooleanQuery进行组合查询时,条件之间的关系是由类BooleanClause.Occur值为Must
+- [MustNot](MustNot.md) --应用BooleanQuery进行组合查询时,条件之间的关系是由类BooleanClause.Occur值为Must_Not
+- [Should](Should.md) --应用BooleanQuery进行组合查询时,条件之间的关系是由类BooleanClause.Occur值为Should
 

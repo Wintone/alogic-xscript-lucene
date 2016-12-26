@@ -18,10 +18,17 @@ import com.anysoft.util.PropertiesConstants;
 public class QueryParse extends FilterBuilder.Abstract {
 	
 	protected Query filter;
-
+	
+	protected String occur = "MUST";
+	
 	@Override
 	public Query getFilter(Properties p) {
 		return filter;
+	}
+	
+	@Override
+	public String getOccur() {
+		return occur;
 	}
 
 	@Override
@@ -29,6 +36,8 @@ public class QueryParse extends FilterBuilder.Abstract {
 		String field = PropertiesConstants.getString(p, "field", "content");
 		String q = PropertiesConstants.getString(p, "q", "");
 		String analyzerStr = PropertiesConstants.getString(p, "analyzer", "StandardAnalyzer");
+		occur = PropertiesConstants.getString(p, "occur", "MUST");
+		
 		Analyzer analyzer = null;
 		if(analyzerStr.equals("StandardAnalyzer")) {
 			analyzer = new StandardAnalyzer();

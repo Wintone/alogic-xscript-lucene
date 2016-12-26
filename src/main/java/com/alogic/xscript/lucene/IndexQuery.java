@@ -37,7 +37,7 @@ public class IndexQuery extends IndexReaderOperation {
 	 */
 	protected FilterBuilder fb = null;
 	
-	protected String type = null;
+	protected String type = "QueryParser";
 	protected String field = "content";
 	protected String q = null;
 	
@@ -92,14 +92,20 @@ public class IndexQuery extends IndexReaderOperation {
 			String fieldType = null;
 			if(field != null) {
 				fieldType = ctx.transform(field);
+			} else {
+				logger.error("Search error: field is null");
 			}
 			String queryStr = null;
 			if(q != null) {
 				queryStr = ctx.transform(q);
+			} else {
+				logger.error("Search error: q is null");
 			}
 			int queryType = -1;
 			if( type != null ) {
 				queryType = map.get(ctx.transform(type));
+			}  else {
+				logger.error("Search error: queryType is null");
 			}
 			
 			Analyzer analyzer = ctx.getObject("analyzer");
@@ -142,6 +148,7 @@ public class IndexQuery extends IndexReaderOperation {
 			if(filter != null) {
 				booleanQuery.add(filter, BooleanClause.Occur.MUST);
 			}
+	
 			IndexSearcher searcher = new IndexSearcher(indexReader);
 			TopScoreDocCollector collector = TopScoreDocCollector.create(1024);
 			searcher.search(booleanQuery.build(), collector);
@@ -156,6 +163,7 @@ public class IndexQuery extends IndexReaderOperation {
 			current.put(tagValue, list);
 		}catch (Exception exc){
 			logger.error("Search error "+exc);
+			exc.printStackTrace();
 		}
 	}
 

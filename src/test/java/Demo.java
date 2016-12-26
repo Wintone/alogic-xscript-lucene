@@ -39,9 +39,9 @@ public class Demo {
 		
         run("java:///xscript/indexNew.xml#Demo", settings);
         run("java:///xscript/indexQuery.xml#Demo", settings);
-//        run("java:///xscript/indexDelete.xml#Demo", settings);
-//        run("java:///xscript/indexQuery.xml#Demo", settings);
-//        run("java:///xscript/indexUpdate.xml#Demo", settings);
-//        run("java:///xscript/indexQuery.xml#Demo", settings);
+        run("java:///xscript/indexDelete.xml#Demo", settings);
+        run("java:///xscript/indexQuery.xml#Demo", settings);
+        run("java:///xscript/indexUpdate.xml#Demo", settings);
+        run("java:///xscript/indexQuery.xml#Demo", settings);
 	}
 }

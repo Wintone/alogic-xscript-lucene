@@ -21,7 +21,13 @@ public class Phrase extends FilterBuilder.Abstract {
 	public Query getFilter(Properties p) {
 		return filter;
 	}
-
+	
+	@Override
+	public String getOccur() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public void configure(Properties p) {
 		String field = PropertiesConstants.getString(p, "field", "content");

@@ -22,6 +22,12 @@ public class NumericRange extends FilterBuilder.Abstract {
 	}
 
 	@Override
+	public String getOccur() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public void configure(Properties p) {
 		String field = PropertiesConstants.getString(p, "field", "content");
 		String lowerTerm = PropertiesConstants.getString(p, "lowerTerm", null);
@@ -30,7 +36,7 @@ public class NumericRange extends FilterBuilder.Abstract {
 		Boolean includeUpper = PropertiesConstants.getBoolean(p, "includeUpper", true);
 	    Double lower = lowerTerm == null ? null : Double.parseDouble(lowerTerm);
 	    Double upper = upperTerm == null ? null : Double.parseDouble(upperTerm);
-		filter = NumericRangeQuery.newDoubleRange(field, lower, upper, includeLower, includeUpper);
+	    filter = NumericRangeQuery.newDoubleRange(field, lower, upper, includeLower, includeUpper);
 	}
 
 }

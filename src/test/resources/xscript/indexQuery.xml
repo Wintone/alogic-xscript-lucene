@@ -10,14 +10,9 @@
 	        -->
        		<!-- <idx-query type="TermQuery" field="content" q="man"/> -->
         	<idx-query>
-        		<filter module="And">
-	        		<filter module="And">
-	        			<filter module="QueryParse" field="content" q="man"/>
-	        		</filter>
-	        		<filter module="Or">
-	        			<filter module="QueryParse"  field="content"  q="hello"/>
-	        			<filter module="QueryParse" field="content" q="woman"/>
-	        		</filter>
+        		<filter module="Multi">
+        			<filter module="QueryParse" occur="MUST" field="content" q="woman"/>
+        			<filter module="QueryParse" occur="MUST_NOT" field="content" q="man"/>
         		</filter>
         	</idx-query>
         </idx-reader>
