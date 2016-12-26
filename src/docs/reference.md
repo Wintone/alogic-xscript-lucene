@@ -9,6 +9,6 @@ alogic-xscript-lucene插件包括：
 		- [更新lucene索引](plugins/idx-update.md)
 		- [删除lucene索引](plugins/idx-delete.md)
 	- [索引的读操作idx-reader](plugins/idx-reader.md)
-			- [查询lucene索引](plugins/idx-query.md)
-			- [过滤器filter](plugins/filters/Filter.md)
+		- [查询lucene索引](plugins/idx-query.md)
+		- [过滤器filter](plugins/filters/Filter.md)
 	
