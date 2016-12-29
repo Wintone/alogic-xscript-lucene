@@ -29,6 +29,9 @@ public class Multi extends Abstract{
 	 */
 	protected List<FilterBuilder> children = new ArrayList<FilterBuilder>();
 	
+	/**
+	 * BooleanClause.Occur三个枚举值MUST、MUST_NOT、SHOULD.
+	 */
 	protected static HashMap<String, Occur> occurMap = new HashMap<String, BooleanClause.Occur> ();
 	static {
 		occurMap.put("MUST", BooleanClause.Occur.MUST);

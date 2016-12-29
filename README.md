@@ -23,9 +23,9 @@ alogic-xscript-lucene是基于xscript2.0的lucene插件，提供了使用lucene�
 ```xml
 <?xml version="1.0"?>
 <script>
-    <using xmlTag="indexConf" module="com.alogic.xscript.lucene.IndexConf"/>
+    <using xmlTag="lucene" module="com.alogic.xscript.lucene.IndexConf"/>
 
-    <indexConf indexDir="D:\\luceneIndex" analyzer="StandardAnalyzer">
+    <lucene indexDir="D:\\luceneIndex" analyzer="StandardAnalyzer">
     	<!-- create为false即批量增加索引,默认为false;
     		true即新建索引，如果是第一次用lucene建立索引，则必须设置为true -->
     	<idx-writer create="true">
@@ -38,9 +38,17 @@ alogic-xscript-lucene是基于xscript2.0的lucene插件，提供了使用lucene�
 	        <idx-new type="text" id="text4" value="goodbye,woman!"/>   
         </idx-writer>   
     	 <idx-reader>
-        <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
-        -->
-        	<idx-query type="PrefixQuery" field="content" q="hel" />
+	        <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
+	        	第一种情况，没有过滤器的简单查询
+	        	第二种情况，过滤器查询
+	        -->
+       		<!-- <idx-query type="TermQuery" field="content" q="man"/> -->
+        	<idx-query>
+        		<filter module="Multi">
+        			<filter module="QueryParse" occur="MUST" field="content" q="woman"/>
+        			<filter module="QueryParse" occur="MUST_NOT" field="content" q="man"/>
+        		</filter>
+        	</idx-query>
         </idx-reader>
         <idx-writer>
         <!-- 在这里你可以使用alogic-xcript-lucene提供的语句
@@ -52,7 +60,7 @@ alogic-xscript-lucene是基于xscript2.0的lucene插件，提供了使用lucene�
         -->
        		<idx-delete field="content" q="man" />
         </idx-writer>
-    </indexConf>
+    </lucene>
 </script>
 ```
 

@@ -37,8 +37,21 @@ public class IndexQuery extends IndexReaderOperation {
 	 */
 	protected FilterBuilder fb = null;
 	
+	/**
+	 * 查询类型，分别有QueryParser、MultiFieldQueryParser、TermQuery、
+	 * PrefixQuery、PhraseQuery、WildcardQuery、TermRangeQuery、NumericRangeQuery、
+	 * BooleanQuery共9种查询类型
+	 */
 	protected String type = "QueryParser";
+	
+	/**
+	 * 索引查询域
+	 */
 	protected String field = "content";
+	
+	/**
+	 * 查询关键字
+	 */
 	protected String q = null;
 	
 	protected static HashMap<String, Integer> map = new HashMap<String,Integer>();

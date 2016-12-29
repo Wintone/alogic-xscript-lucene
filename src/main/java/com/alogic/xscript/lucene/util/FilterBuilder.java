@@ -27,7 +27,7 @@ public interface FilterBuilder extends XMLConfigurable,Configurable{
 	public Query getFilter(Properties p);
 	
 	/**
-	 * 获取过滤器中的组合查询参数值
+	 * 获取过滤器中的组合查询参数值,BooleanClause.Occur三个枚举值MUST、MUST_NOT、SHOULD.
 	 */
 	public String getOccur();
 	
