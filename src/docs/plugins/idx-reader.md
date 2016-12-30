@@ -2,8 +2,11 @@ idx-reader
 =======
 
 idx-reader是一个类(IndexReader)表示对索引的读操作。
+
 这个类属于org.apache.lucene.index包。
+
 使用这个类，可以执行对索引的读操作，即根据关键字进行各种不同类型的查询操作。
+
 
 
 

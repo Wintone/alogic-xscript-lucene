@@ -42,12 +42,12 @@ public class IndexQuery extends IndexReaderOperation {
 	 * PrefixQuery、PhraseQuery、WildcardQuery、TermRangeQuery、NumericRangeQuery、
 	 * BooleanQuery共9种查询类型
 	 */
-	protected String type = "QueryParser";
+	protected String type = null;
 	
 	/**
 	 * 索引查询域
 	 */
-	protected String field = "content";
+	protected String field = null;
 	
 	/**
 	 * 查询关键字
@@ -105,22 +105,15 @@ public class IndexQuery extends IndexReaderOperation {
 			String fieldType = null;
 			if(field != null) {
 				fieldType = ctx.transform(field);
-			} else {
-				logger.error("Search error: field is null");
 			}
 			String queryStr = null;
 			if(q != null) {
 				queryStr = ctx.transform(q);
-			} else {
-				logger.error("Search error: q is null");
 			}
 			int queryType = -1;
 			if( type != null ) {
 				queryType = map.get(ctx.transform(type));
-			}  else {
-				logger.error("Search error: queryType is null");
 			}
-			
 			Analyzer analyzer = ctx.getObject("analyzer");
 			Query query = null;
 			switch(queryType) {

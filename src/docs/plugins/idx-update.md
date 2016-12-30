@@ -2,6 +2,7 @@ idx-update
 ========
 
 idx-update用于执行更新索引，更新某个文档或文本变量中的值。
+
 必须在idx-writer语句内使用。
 
 

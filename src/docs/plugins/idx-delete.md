@@ -2,6 +2,7 @@ idx-delete
 ========
 
 idx-delete用于执行删除索引，删除某种域名中含有某个关键字的文档。
+
 必须在idx-writer语句内使用。
 
 

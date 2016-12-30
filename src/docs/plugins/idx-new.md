@@ -2,6 +2,7 @@ idx-new
 ========
 
 idx-new用于执行创建索引。
+
 必须在idx-writer语句内使用。
 
 

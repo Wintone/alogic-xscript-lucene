@@ -2,8 +2,11 @@ idx-writer
 =======
 
 idx-writer是一个类(indexWriter)表示对索引的写操作（包括新建、添加、更新和删除）。
+
 这个类属于org.apache.lucene.index包。
+
 使用这个类，可以执行对索引的写操作。
+
 新建、添加、更新和删除索引等操作。
 
 

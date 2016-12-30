@@ -2,8 +2,9 @@ idx-query
 ========
 
 idx-query用于执行查询索引。
-分别有QueryParser、MultiFieldQueryParser、TermQuery、
-PrefixQuery、WildcardQuery共5种查询类型
+
+分别有QueryParser、MultiFieldQueryParser、TermQuery、PrefixQuery、WildcardQuery共5种查询类型。
+
 必须在idx-reader语句内使用。
 
 
