@@ -17,6 +17,8 @@ public class Phrase extends FilterBuilder.Abstract {
 
 	protected Query filter;
 	
+	protected String occur = "MUST";
+	
 	@Override
 	public Query getFilter(Properties p) {
 		return filter;
@@ -24,8 +26,7 @@ public class Phrase extends FilterBuilder.Abstract {
 	
 	@Override
 	public String getOccur() {
-		// TODO Auto-generated method stub
-		return null;
+		return occur;
 	}
 	
 	@Override
@@ -33,6 +34,7 @@ public class Phrase extends FilterBuilder.Abstract {
 		String field = PropertiesConstants.getString(p, "field", "content");
 		String q = PropertiesConstants.getString(p, "q", "");
 		int slop = PropertiesConstants.getInt(p, "slot", 0);
+		occur = PropertiesConstants.getString(p, "occur", "MUST");
 		String[] keys = q.split("\\|");
 		PhraseQuery.Builder phraseQuery = new PhraseQuery.Builder();
 		phraseQuery.setSlop(slop);

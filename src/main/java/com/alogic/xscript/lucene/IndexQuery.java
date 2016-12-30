@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
@@ -26,6 +27,7 @@ import com.alogic.xscript.ExecuteWatcher;
 import com.alogic.xscript.Logiclet;
 import com.alogic.xscript.LogicletContext;
 import com.alogic.xscript.lucene.util.FilterBuilder;
+import com.anysoft.util.BaseException;
 import com.anysoft.util.Properties;
 import com.anysoft.util.XmlElementProperties;
 import com.anysoft.util.XmlTools;
@@ -102,6 +104,18 @@ public class IndexQuery extends IndexReaderOperation {
 			LogicletContext ctx, ExecuteWatcher watcher) {
 		try {
 			String tagValue = ctx.transform(tag);	
+
+			if(fb == null) {
+				//简单查询的时候，field,q,type三个参数缺一不可
+				if(StringUtils.isEmpty(field) || StringUtils.isEmpty(q) || StringUtils.isEmpty(type))
+					throw new BaseException("core.not_enought_parameters", "Not enought parameters,check your script.");
+			} else {
+				//含有过滤器的查询的时候，简单查询可有可无（field,q,type三个参数或都存在或都不存在）
+				if(!((StringUtils.isEmpty(field) && StringUtils.isEmpty(q) && StringUtils.isEmpty(type)) || 
+						(!StringUtils.isEmpty(field) && !StringUtils.isEmpty(q) && !StringUtils.isEmpty(type)))) {
+					throw new BaseException("core.not_enought_parameters", "Not enought parameters,check your script.");
+				}
+			}
 			String fieldType = null;
 			if(field != null) {
 				fieldType = ctx.transform(field);
@@ -112,7 +126,11 @@ public class IndexQuery extends IndexReaderOperation {
 			}
 			int queryType = -1;
 			if( type != null ) {
-				queryType = map.get(ctx.transform(type));
+				if(map.containsKey(ctx.transform(type))) {
+					queryType = map.get(ctx.transform(type));
+				} else {
+					throw new BaseException("core.not_correct_queryType", "Not correct queryType,check your script.");
+				}
 			}
 			Analyzer analyzer = ctx.getObject("analyzer");
 			Query query = null;

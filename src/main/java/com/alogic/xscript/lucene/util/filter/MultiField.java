@@ -20,6 +20,8 @@ public class MultiField extends FilterBuilder.Abstract {
 
 	protected Query filter;
 	
+	protected String occur = "MUST";
+	
 	@Override
 	public Query getFilter(Properties p) {
 		return filter;
@@ -27,8 +29,7 @@ public class MultiField extends FilterBuilder.Abstract {
 	
 	@Override
 	public String getOccur() {
-		// TODO Auto-generated method stub
-		return null;
+		return occur;
 	}
 
 
@@ -37,6 +38,7 @@ public class MultiField extends FilterBuilder.Abstract {
 		String field = PropertiesConstants.getString(p, "field", "content");
 		String q = PropertiesConstants.getString(p, "q", "");
 		String[] fields = field.split("\\|");
+		occur = PropertiesConstants.getString(p, "occur", "MUST");
 		String analyzerStr = PropertiesConstants.getString(p, "analyzer", "StandardAnalyzer");
 		Analyzer analyzer = null;
 		if(analyzerStr.equals("StandardAnalyzer")) {

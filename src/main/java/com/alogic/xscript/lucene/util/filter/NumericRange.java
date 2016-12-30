@@ -16,6 +16,8 @@ public class NumericRange extends FilterBuilder.Abstract {
 
 	protected Query filter;
 	
+	protected String occur = "MUST";
+	
 	@Override
 	public Query getFilter(Properties p) {
 		return filter;
@@ -23,8 +25,7 @@ public class NumericRange extends FilterBuilder.Abstract {
 
 	@Override
 	public String getOccur() {
-		// TODO Auto-generated method stub
-		return null;
+		return occur;
 	}
 
 	@Override
@@ -36,6 +37,7 @@ public class NumericRange extends FilterBuilder.Abstract {
 		Boolean includeUpper = PropertiesConstants.getBoolean(p, "includeUpper", true);
 	    Double lower = lowerTerm == null ? null : Double.parseDouble(lowerTerm);
 	    Double upper = upperTerm == null ? null : Double.parseDouble(upperTerm);
+	    occur = PropertiesConstants.getString(p, "occur", "MUST");
 	    filter = NumericRangeQuery.newDoubleRange(field, lower, upper, includeLower, includeUpper);
 	}
 
