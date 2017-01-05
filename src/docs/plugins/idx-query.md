@@ -43,8 +43,8 @@ com.alogic.xscript.lucene.IndexQuery
        		<!-- <idx-query type="TermQuery" field="content" q="man"/> -->
         	<idx-query>
         		<filter module="Multi">
-        			<filter module="QueryParse" occur="MUST" field="content" q="woman"/>
-        			<filter module="QueryParse" occur="MUST_NOT" field="content" q="man"/>
+        			<filter module="QueryParse"  analyzer="StandardAnalyzer" occur="MUST" field="content" q="woman"/>
+        			<filter module="QueryParse"  analyzer="StandardAnalyzer" occur="MUST_NOT" field="content" q="man"/>
         		</filter>
         	</idx-query>
         </idx-reader>
