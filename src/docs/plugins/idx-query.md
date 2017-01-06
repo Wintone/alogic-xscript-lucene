@@ -19,7 +19,7 @@ com.alogic.xscript.lucene.IndexQuery
 | ---- | ---- | ---- |
 | 1 | pid | idx-reader的上下文对象id,缺省为$idx-reader | 
 | 2 | type | 需要采用的查询类型,值为{QueryParser、MultiFieldQueryParser、TermQuery、PrefixQuery、WildcardQuery}中一个，必要 | 
-| 3 | field | 域名（可以为content、filename等）,必要| 
+| 3 | field | 域名（可以为content、fileName等）,必要| 
 | 4 | q | 关键字,必要 | 
 
 备注：

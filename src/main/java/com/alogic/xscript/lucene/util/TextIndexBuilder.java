@@ -12,16 +12,16 @@ public class TextIndexBuilder {
 	
 	protected static final Logger logger = LogManager.getLogger(TextIndexBuilder.class);
 	
-	protected String filename = null;
+	protected String fileName = null;
 	protected String content = null;
 	
 	public TextIndexBuilder(String id, String value) {
-		filename = id;
+		fileName = id;
 		content = value;
 	}
 
 	protected String getFileName() {
-		return filename;
+		return fileName;
 	}
 	
 	protected String getContent() {
@@ -31,11 +31,11 @@ public class TextIndexBuilder {
 	public void addDocument(IndexWriter writer) {
 		try {
 			Document doc = new Document();			
-			doc.add(new StringField("filename", filename, Field.Store.YES));
+			doc.add(new StringField("fileName", fileName, Field.Store.YES));
 			doc.add(new TextField("content", content, Field.Store.YES));			
 			writer.addDocument(doc);
 			writer.commit();
-			//logger.info("TextIndexBuilder  Success! " + doc);
+//			logger.info("TextIndexBuilder  Success! " + doc);
 		}catch (Exception ex){
 			ex.printStackTrace();
 		}

@@ -11,7 +11,7 @@ com.alogic.xscript.lucene.util.filter.TermrRange
 
 | 编号 | 代码 | 说明 |
 | ---- | ---- | ---- |
-| 1 | field | 域名（可以为content、filename等）,必要|
+| 1 | field | 域名（可以为content、fileName等）,必要|
 | 2 | lowerTerm | 关键字字符串下界 |
 | 3 | upperTerm | 关键字字符串上界 | 
 | 4 | includeLower | 是否包含下界（true,false） | 

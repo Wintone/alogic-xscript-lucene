@@ -16,7 +16,7 @@ com.alogic.xscript.lucene.IndexDelete
 | 编号 | 代码 | 说明 |
 | ---- | ---- | ---- |
 | 1 | pid | idx-writer的上下文对象id,缺省为$idx-writer | 
-| 2 | field | 域名（可以为content、filename等）,必要 | 
+| 2 | field | 域名（可以为content、fileName等）,必要 | 
 | 3 | q | 关键字,必要 | 
 
 

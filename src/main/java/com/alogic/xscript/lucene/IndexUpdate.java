@@ -46,9 +46,9 @@ public class IndexUpdate extends IndexWriterOperation {
 			String fileName = ctx.transform(file);
 			String content = ctx.transform(contentValue);
 			Document doc = new Document();
-			doc.add(new TextField("filename", fileName, Store.YES));
+			doc.add(new TextField("fileName", fileName, Store.YES));
 			doc.add(new TextField("content", content, Store.YES));			
-			indexWriter.updateDocument(new Term("filename", fileName), doc);
+			indexWriter.updateDocument(new Term("fileName", fileName), doc);
 			indexWriter.commit();
 			logger.info("Index update Success! ");
 		} catch(IOException e) {

@@ -182,7 +182,7 @@ public class IndexQuery extends IndexReaderOperation {
 			for (ScoreDoc doc:hits){
 				 int docId = doc.doc;
 			     Document d = searcher.doc(docId);
-			     list.add(d.get("filename"));
+			     list.add(d.get("fileName"));
 			}
 			current.put(tagValue, list);
 		}catch (Exception exc){
