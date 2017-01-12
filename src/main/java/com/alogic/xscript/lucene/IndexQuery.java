@@ -1,7 +1,6 @@
 package com.alogic.xscript.lucene;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,20 +54,6 @@ public class IndexQuery extends IndexReaderOperation {
 	 * 查询关键字
 	 */
 	protected String q = null;
-	
-	protected static HashMap<String, Integer> map = new HashMap<String,Integer>();
-	
-	static {
-		map.put("QueryParser", 0);
-		map.put("MultiFieldQueryParser", 1);
-		map.put("TermQuery", 2);
-		map.put("PrefixQuery", 3);
-		map.put("PhraseQuery", 4);
-		map.put("WildcardQuery", 5);
-		map.put("TermRangeQuery", 6);
-		map.put("NumericRangeQuery", 7);
-		map.put("BooleanQuery", 8);
-	}
 
 	public IndexQuery(String tag, Logiclet p) {
 		super(tag, p);
@@ -124,42 +109,37 @@ public class IndexQuery extends IndexReaderOperation {
 			if(q != null) {
 				queryStr = ctx.transform(q);
 			}
-			int queryType = -1;
-			if( type != null ) {
-				if(map.containsKey(ctx.transform(type))) {
-					queryType = map.get(ctx.transform(type));
-				} else {
-					throw new BaseException("core.not_correct_queryType", "Not correct queryType,check your script.");
-				}
-			}
 			Analyzer analyzer = ctx.getObject("analyzer");
 			Query query = null;
-			switch(queryType) {
-				case  0:
-					query = new QueryParser(fieldType, analyzer).parse(queryStr);
-					break;
-				case 1:
-					String[] fields = fieldType.split("\\|");
-					query = new MultiFieldQueryParser(fields, analyzer).parse(queryStr);
-					break;
-				case 2:
-					query = new TermQuery(new Term(fieldType, queryStr));
-					break;
-				case 3:
-					query = new PrefixQuery(new Term(fieldType, queryStr));
-					break;
-				case 4:
-					break;
-				case 5:
-					query = new WildcardQuery(new Term(fieldType, queryStr));
-					break;
-				case 6:
-					break;
-				case 7:
-					break;
-				case 8:
-					break;
-				default:
+			if( type != null ) {
+				switch(ctx.transform(type)) {
+					case "QueryParser":
+						query = new QueryParser(fieldType, analyzer).parse(queryStr);
+						break;
+					case "MultiFieldQueryParser":
+						String[] fields = fieldType.split("\\|");
+						query = new MultiFieldQueryParser(fields, analyzer).parse(queryStr);
+						break;
+					case "TermQuery":
+						query = new TermQuery(new Term(fieldType, queryStr));
+						break;
+					case "PrefixQuery":
+						query = new PrefixQuery(new Term(fieldType, queryStr));
+						break;
+					case "PhraseQuery":
+						break;
+					case "WildcardQuery":
+						query = new WildcardQuery(new Term(fieldType, queryStr));
+						break;
+					case "TermRangeQuery":
+						break;
+					case "NumericRangeQuery":
+						break;
+					case "BooleanQuery":
+						break;
+					default:
+						throw new BaseException("core.not_correct_queryType", "Not correct queryType,check your script.");
+				}
 			}
 			Query filter = null;
 			if (fb != null) {

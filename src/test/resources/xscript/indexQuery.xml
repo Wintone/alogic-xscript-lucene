@@ -8,7 +8,7 @@
 	        	第一种情况，没有过滤器的简单查询
 	        	第二种情况，过滤器查询
 	        -->
-       		<!-- <idx-query type="QueryParse" field="content" q="man"/> -->
+<!-- 			<idx-query type="QueryParser" field="content" q="man"/> -->
         	<idx-query>
         		<filter module="Multi">
         			<filter module="QueryParse"  analyzer="StandardAnalyzer" occur="MUST" field="content" q="woman"/>
