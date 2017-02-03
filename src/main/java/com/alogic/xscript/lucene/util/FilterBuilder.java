@@ -1,8 +1,8 @@
 package com.alogic.xscript.lucene.util;
 
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.lucene.search.Query;
 import org.w3c.dom.Element;
 
@@ -40,7 +40,7 @@ public interface FilterBuilder extends XMLConfigurable,Configurable{
 		/**
 		 * a logger of log4j
 		 */
-		protected static final Logger LOG = LogManager.getLogger(FilterBuilder.class);
+		protected static final Logger LOG = LoggerFactory.getLogger(FilterBuilder.class);
 		
 		@Override
 		public void configure(Element e, Properties p) {

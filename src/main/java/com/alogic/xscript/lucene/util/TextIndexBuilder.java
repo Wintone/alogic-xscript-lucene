@@ -1,16 +1,17 @@
 package com.alogic.xscript.lucene.util;
 
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexWriter;
+import org.slf4j.LoggerFactory;
 
 public class TextIndexBuilder {
 	
-	protected static final Logger logger = LogManager.getLogger(TextIndexBuilder.class);
+	protected static final Logger logger =  (Logger) LoggerFactory.getLogger(TextIndexBuilder.class);
+
 	
 	protected String fileName = null;
 	protected String content = null;
